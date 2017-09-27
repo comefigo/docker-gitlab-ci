@@ -1,12 +1,5 @@
 version: "3.2"
-services: 
-  gitlab-busybox:
-    image: busybox:latest
-    container_name: gitlab-busybox
-    volumes:
-      - gitlab-conf:/var/gitlab/conf
-      - gitlab-log:/var/gitlab/log
-      - gitlab-data:/var/gitlab/data
+services:
   gitlab:
     image: gitlab/gitlab-ce:latest
     container_name: gitlab
@@ -22,13 +15,6 @@ services:
       - gitlab-data:/var/opt/gitlab
     env_file:
       - common.env
-    depends_on: 
-      - gitlab-busybox
-  gitlab-runner-busybox:
-    image: busybox:latest
-    container_name: gitlab-runner-busybox
-    volumes:
-      - gitlab-runner-conf:/var/gitlab-runner/conf
   gitlab-runner:
     build: 
       context: .
@@ -43,8 +29,7 @@ services:
       - gitlab-runner-conf:/etc/gitlab-runner
     env_file:
       - common.env
-    depends_on: 
-      - gitlab-runner-busybox
+    depends_on:
       - gitlab
 volumes: 
   gitlab-conf:
