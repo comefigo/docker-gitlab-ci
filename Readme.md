@@ -5,10 +5,12 @@ gitlabとgitlab-runnerをローカルで気軽に試すための環境をDocker�
 # 起動方法
 
 1. 以下のコマンドで起動する
-```
-> docker-compose up -d
-```
+    ```
+    > docker-compose up -d
+    ```
 2. 起動後、http://localhost にアクセス
+3. パスワードの設定
+4. ユーザ名：root / パスワード：3で設定したパスワードでログイン
 
 # Runnerにジョブを登録
 
