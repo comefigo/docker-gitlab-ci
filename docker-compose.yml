@@ -15,9 +15,9 @@ services:
       - common.env
   gitlab-runner:
     build: 
-      context: .
-      dockerfile: Dockerfile-runner
-    image: gitlab-runner-pip
+      context: ./runner
+      dockerfile: Dockerfile
+    image: gitlab-runner
     container_name: gitlab-runner
     hostname: gitlab-runner
     restart: always
