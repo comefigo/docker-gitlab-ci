@@ -12,11 +12,13 @@ gitlabとgitlab-runnerをローカルで気軽に試すための環境をDocker�
 3. パスワードの設定
 4. ユーザ名：root / パスワード：3で設定したパスワードでログイン
 
-# Runnerにジョブを登録
+# GitlabとRunnerの連携
+
+CI/CDしたいプロジェクトとRunnerの連携設定
 
 https://docs.gitlab.com/runner/register/index.html
 
-1. Runnerにジョブを登録
+1. Runnerの登録
 ```
 > docker exec -it gitlab-runner gitlab-runner register
 ```
@@ -28,3 +30,7 @@ URLはgitlabのリンク名(docker-composeで定義されているlinks)を使�
 Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com )
 > http://gitlab/
 ```
+3. プロジェクトの「Settings」-「CI/CD」-「General piplines」-「Runner token」で新規Tokenの発行し、プロンプトに入力
+4. タグ付け  
+    特定のタグがついたrunnerを実行することができる
+5. 実行モードを選択
