@@ -34,3 +34,11 @@ Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com )
 4. タグ付け  
     特定のタグがついたrunnerを実行することができる
 5. 実行モードを選択
+
+# .gitlab-ci.yml
+
+gitlab-runnerはリポジトリルートにある`.gitlab-ci.yml`を参照し、タスクを実行する
+
+※.gitlab-ci.yml
+- http://cwfdev/gitlab/help/ci/quick_start/README
+- http://cwfdev/gitlab/help/ci/yaml/README.md
