@@ -15,4 +15,4 @@ RUN apt-get install -y python3 build-essential python-dev
 RUN curl -kL "https://bootstrap.pypa.io/get-pip.py" | python
 
 # install aws cli
-RUN pip install awscli ansible==2.5.5 boto boto3
+RUN pip install awscli ansible boto boto3

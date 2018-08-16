@@ -1,5 +1,27 @@
 version: "3.2"
 services:
+  gitlab-registry:
+    image: registry
+    container_name: gitlab-registry
+    hostname: gitlab-registry
+    ports:
+      - "5000:5000"
+    restart: always
+    volumes:
+      - gitlab-registry:/var/lib/registry
+    env_file:
+      - envs/common.env
+  gitlab-registry-ui:
+    image: konradkleine/docker-registry-frontend:v2
+    container_name: gitlab-registry-ui
+    hostname: gitlab-registry-ui
+    ports:
+      - "8080:80"
+    env_file:
+      - envs/common.env
+      - envs/registry.env
+    depends_on:
+      - gitlab-registry
   gitlab:
     image: gitlab/gitlab-ce:latest
     container_name: gitlab
@@ -13,7 +35,7 @@ services:
       - gitlab-log:/var/log/gitlab
       - gitlab-data:/var/opt/gitlab
     env_file:
-      - common.env
+      - envs/common.env
   gitlab-runner:
     build: 
       context: ./runner
@@ -22,12 +44,10 @@ services:
     container_name: gitlab-runner
     hostname: gitlab-runner
     restart: always
-    links:
-      - gitlab
     volumes:
       - gitlab-runner-conf:/etc/gitlab-runner
     env_file:
-      - common.env
+      - envs/common.env
     depends_on:
       - gitlab
 volumes: 
@@ -35,3 +55,4 @@ volumes:
   gitlab-log:
   gitlab-data:
   gitlab-runner-conf:
+  gitlab-registry:
