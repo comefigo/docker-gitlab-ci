@@ -36,6 +36,12 @@ services:
       - gitlab-data:/var/opt/gitlab
     env_file:
       - envs/common.env
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        gitlab_rails['registry_enabled'] = true
+        gitlab_rails['registry_host'] = "gitlab-registry"
+        gitlab_rails['registry_port'] = "5000"
+        gitlab_rails['registry_api_url'] = "http://gitlab-registry:5000"
   gitlab-runner:
     build: 
       context: ./runner
