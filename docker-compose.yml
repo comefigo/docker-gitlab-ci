@@ -52,8 +52,10 @@ services:
     restart: always
     volumes:
       - gitlab-runner-conf:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
     env_file:
       - envs/common.env
+      - envs/registry.env
     depends_on:
       - gitlab
 volumes: 
