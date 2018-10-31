@@ -38,7 +38,3 @@ Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com )
 # .gitlab-ci.yml
 
 gitlab-runnerはリポジトリルートにある`.gitlab-ci.yml`を参照し、タスクを実行する
-
-※.gitlab-ci.yml
-- http://cwfdev/gitlab/help/ci/quick_start/README
-- http://cwfdev/gitlab/help/ci/yaml/README.md
